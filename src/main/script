@@ -1,0 +1,23 @@
+CREATE TABLE Profesor (
+    id SERIAL PRIMARY KEY,  
+    nombre VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Estudiante (
+    id SERIAL PRIMARY KEY, 
+    nombre VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Calificacion (
+    id SERIAL PRIMARY KEY,  
+    nombre VARCHAR(100) NOT NULL,
+    idProfesor INT,
+    idEstudiante INT,
+    valor DECIMAL(5,2) NOT NULL,
+    
+    
+    CONSTRAINT fk_profesor FOREIGN KEY (idProfesor) REFERENCES Profesor(id),
+    CONSTRAINT fk_estudiante FOREIGN KEY (idEstudiante) REFERENCES Estudiante(id)
+);
